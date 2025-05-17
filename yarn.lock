@@ -2240,6 +2240,7 @@ __metadata:
     "@fullcalendar/timegrid": "npm:^6.1.17"
     "@mui/icons-material": "npm:^7.1.0"
     "@mui/material": "npm:^7.1.0"
+    "@mui/system": "npm:^7.1.0"
     "@mui/x-data-grid": "npm:^8.2.0"
     "@nivo/bar": "npm:^0.93.0"
     "@nivo/core": "npm:^0.93.0"

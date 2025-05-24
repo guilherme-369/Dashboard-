@@ -4,7 +4,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataInvoices } from "../../Data/MockData";
 import { useTheme } from "@mui/material";
-import Header from "../../Components/Header";
+import Header from "../../components/Header";
 
 // 🔹 Função que retorna as colunas do DataGrid
 const getColumns = () => [

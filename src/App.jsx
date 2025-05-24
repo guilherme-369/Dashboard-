@@ -9,7 +9,7 @@ import Contacts from "./scenes/contacts";
 import Bar from "./scenes/bar";
 import Form from "./scenes/form";
 import Line from "./scenes/line";
-import Pie from "./scenes/pie/pie";
+import Pie from "./scenes/pie/index";
 import FAQ from "./scenes/faq";
 import Geography from "./scenes/geography";
 import { CssBaseline, ThemeProvider } from "@mui/material";

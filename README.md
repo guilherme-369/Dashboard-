@@ -37,6 +37,8 @@ A modern, admin dashboard built with React and Material UI. This project showcas
 - **<a href="https://www.linkedin.com/in/guilherme-passos369/">LinkedIn</a>**
 - **<a href="https://github.com/guilherme-369">GitHub</a>**
 
+## 📜 License
+- This project is licensed under the MIT License - feel free to use and modify it as needed.
 
 ## 💻 Installation
 
@@ -50,6 +52,3 @@ npm install
 
 # Run the app
 npm run dev
-
-## 📜 License
-- This project is licensed under the MIT License - feel free to use and modify it as needed.

@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, Typography, useTheme, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  useTheme,
+  IconButton,
+  useMediaQuery,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -17,20 +23,26 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
 const SidebarComponent = () => {
   const theme = useTheme();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 600px)");
+  const [isCollapsed, setIsCollapsed] = useState(isMobile);
   const [selected, setSelected] = useState("Dashboard");
+
+  // Faz com que o sidebar colapse automaticamente quando muda o tamanho da tela
+  useEffect(() => {
+    setIsCollapsed(isMobile);
+  }, [isMobile]);
 
   const handleSelect = (title) => setSelected(title);
 
   return (
-    <Box style={{ height: "100vh", display: "flex" }}>
+    <Box height="100vh" display="flex">
       <Sidebar
         collapsed={isCollapsed}
         backgroundColor={theme.palette.background.default}
         rootStyles={{ borderRight: "none" }}
       >
         <Menu>
-          {/* Botão de colapso */}
+          {/* Botão de abrir/fechar sidebar */}
           <MenuItem
             icon={<MenuOutlinedIcon />}
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -42,7 +54,9 @@ const SidebarComponent = () => {
                 alignItems="center"
                 px={2}
               >
-                <Typography variant="h6">PAINEL GSP</Typography>
+                <Typography variant="h6" fontWeight="bold">
+                  PAINEL GSP
+                </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
@@ -60,12 +74,14 @@ const SidebarComponent = () => {
                 src={"sapopf.jpeg"}
                 style={{ cursor: "pointer", borderRadius: "50%" }}
               />
-              <Typography variant="h6">Guilherme Passos</Typography>
+              <Typography variant="h6" fontWeight="bold">
+                Guilherme Passos
+              </Typography>
               <Typography variant="body2">VIP</Typography>
             </Box>
           )}
 
-          {/* Itens principais */}
+          {/* Itens */}
           <MenuItem
             active={selected === "Dashboard"}
             onClick={() => handleSelect("Dashboard")}

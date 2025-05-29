@@ -8,23 +8,21 @@ import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
 
-// 🔹 Função para renderizar célula de acesso
 const renderAccessCell = (access, colors) => {
   const icon =
     access === "admin" ? (
-      <AdminPanelSettingsOutlinedIcon titleAccess="Admin Access" />
+      <AdminPanelSettingsOutlinedIcon title="Admin Access" />
     ) : access === "manager" ? (
-      <SecurityOutlinedIcon titleAccess="Manager Access" />
+      <SecurityOutlinedIcon title="Manager Access" />
     ) : (
-      <LockOpenOutlinedIcon titleAccess="User Access" />
+      <LockOpenOutlinedIcon title="User Access" />
     );
 
   return (
     <Box
-      width="60%"
+      minWidth="120px"
       m="0 auto"
-      mt="5%"
-      p="5px"
+      p="5px 10px"
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -41,7 +39,6 @@ const renderAccessCell = (access, colors) => {
   );
 };
 
-// 🔹 Função que retorna as colunas do DataGrid
 const getColumns = (colors) => [
   { field: "id", headerName: "ID", flex: 0.5 },
   {
@@ -75,7 +72,6 @@ const getColumns = (colors) => [
   },
 ];
 
-// 🔹 Componente principal
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -87,7 +83,7 @@ const Team = () => {
 
       <Box
         m="40px 0 0 0"
-        height="65vh"
+        height={{ xs: "60vh", sm: "65vh", md: "70vh" }}
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -97,6 +93,11 @@ const Team = () => {
           },
           "& .name-column--cell": {
             color: colors.greenAccent[500],
+            fontWeight: "bold",
+          },
+          "& .name-column--cell:hover": {
+            textDecoration: "underline",
+            cursor: "pointer",
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: colors.blueAccent[700],

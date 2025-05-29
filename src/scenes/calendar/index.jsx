@@ -12,6 +12,7 @@ import {
   ListItemText,
   Typography,
   useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
@@ -19,10 +20,11 @@ import { tokens } from "../../theme";
 const Calendar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isMobile = useMediaQuery("(max-width:768px)");
   const [currentEvents, setCurrentEvents] = useState([]);
 
   const handleDateClick = (selected) => {
-    const title = prompt("Please enter a new title for you event");
+    const title = prompt("Please enter a new title for your event");
     const calendarApi = selected.view.calendar;
     calendarApi.unselect();
 
@@ -50,13 +52,18 @@ const Calendar = () => {
   return (
     <Box m="20px">
       <Header title={"Calendar"} subTitle={"Full Calendar Interactive Page"} />
-      <Box display="flex" justifyContent="space-between">
+      <Box
+        display="flex"
+        flexDirection={isMobile ? "column" : "row"}
+        justifyContent="space-between"
+      >
         {/* {SIDEBAR EVENTS} */}
         <Box
-          flex="1 1 20%"
+          flex={isMobile ? "1" : "1 1 20%"}
           backgroundColor={colors.primary[400]}
           p="15px"
           borderRadius="4px"
+          mb={isMobile ? "15px" : "0"} // Adiciona espaçamento inferior no mobile
         >
           <Typography variant="h5">Events</Typography>
           <List>
@@ -87,7 +94,10 @@ const Calendar = () => {
         </Box>
 
         {/* { CALENDAR } */}
-        <Box flex="1 1 100%" ml="15px">
+        <Box
+          flex={isMobile ? "1" : "1 1 80%"}
+          ml={isMobile ? "0" : "15px"} // Remove margem esquerda no mobile
+        >
           <FullCalendar
             height="75vh"
             plugins={[

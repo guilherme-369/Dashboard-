@@ -1,16 +1,18 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import PieChart from "../../components/PieChart";
 import Header from "../../components/Header";
 
-const pie = () => {
+const Pie = () => {
+  const isMobile = useMediaQuery("(max-width:768px)");
+
   return (
-    <Box mb="20px">
-      <Header title={"Pie Chart"} subTitle={"Simple Pie Chart"} />
-      <Box height="75vh">
+    <Box m={isMobile ? "10px" : "20px"}>
+      <Header title="Pie Chart" subTitle="Simple Pie Chart" />
+      <Box height={isMobile ? "60vh" : "75vh"}>
         <PieChart />
       </Box>
     </Box>
   );
 };
 
-export default pie;
+export default Pie;
